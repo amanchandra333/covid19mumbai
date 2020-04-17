@@ -413,14 +413,14 @@ function MapExplorer({
         <h1>{currentMap.name}</h1>
         <h6>
           {window.innerWidth <= 769 ? 'Tap' : 'Hover'} over a{' '}
-          {currentMap.mapType === MAP_TYPES.COUNTRY ? 'state/ut' : 'district'}{' '}
+          {currentMap.mapType === MAP_TYPES.COUNTRY ? 'Ward' : 'district'}{' '}
           for more details
         </h6>
       </div>
 
       <div className="map-stats">
         <div className="stats fadeInUp" style={{animationDelay: '2s'}}>
-          <h5>{window.innerWidth <= 769 ? 'VCongAr' : 'Very Cong'}</h5>
+          <h5>{window.innerWidth <= 769 ? 'VCongAr' : 'Very Congested'}</h5>
           <div className="stats-bottom">
             <h1>{formatNumber(panelRegion["Number_of_Cases-_Very_Congested_Area"])}</h1>
             <h6>{}</h6>
@@ -428,10 +428,10 @@ function MapExplorer({
         </div>
 
         <div
-          className="stats is-blue fadeInUp"
+          className="stats is-orange fadeInUp"
           style={{animationDelay: '2.1s'}}
         >
-          <h5>{window.innerWidth <= 769 ? 'MedCong' : 'Med Cong'}</h5>
+          <h5>{window.innerWidth <= 769 ? 'MedCong' : 'Med. Congested'}</h5>
           <div className="stats-bottom">
             <h1>{formatNumber(panelRegion["Number_of_Cases-_Medium_Congested"])}</h1>
             <h6>{}</h6>
@@ -439,7 +439,7 @@ function MapExplorer({
         </div>
 
         <div
-          className="stats is-green fadeInUp"
+          className="stats is-blue fadeInUp"
           style={{animationDelay: '2.2s'}}
         >
           <h5>{window.innerWidth <= 769 ? 'Alone' : 'Standalone'}</h5>
