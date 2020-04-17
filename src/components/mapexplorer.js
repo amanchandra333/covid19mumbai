@@ -19,239 +19,239 @@ const mapMeta = {
     mapType: MAP_TYPES.COUNTRY,
     graphObjectName: 'india',
   },
-  'Andaman and Nicobar Islands': {
-    name: 'Andaman and Nicobar Islands',
-    geoDataFile: `${MAPS_DIR}/andamannicobarislands.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'andamannicobarislands_district',
-  },
-  'Arunachal Pradesh': {
-    name: 'Arunachal Pradesh',
-    geoDataFile: `${MAPS_DIR}/arunachalpradesh.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'arunachalpradesh_district',
-  },
-  'Andhra Pradesh': {
-    name: 'Andhra Pradesh',
-    geoDataFile: `${MAPS_DIR}/andhrapradesh.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'andhrapradesh_district',
-  },
+  // 'Andaman and Nicobar Islands': {
+  //   name: 'Andaman and Nicobar Islands',
+  //   geoDataFile: `${MAPS_DIR}/andamannicobarislands.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'andamannicobarislands_district',
+  // },
+  // 'Arunachal Pradesh': {
+  //   name: 'Arunachal Pradesh',
+  //   geoDataFile: `${MAPS_DIR}/arunachalpradesh.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'arunachalpradesh_district',
+  // },
+  // 'Andhra Pradesh': {
+  //   name: 'Andhra Pradesh',
+  //   geoDataFile: `${MAPS_DIR}/andhrapradesh.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'andhrapradesh_district',
+  // },
 
-  Assam: {
-    name: 'Assam',
-    geoDataFile: `${MAPS_DIR}/assam.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'assam_district',
-  },
-  Bihar: {
-    name: 'Bihar',
-    geoDataFile: `${MAPS_DIR}/bihar.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'bihar_district',
-  },
-  Chandigarh: {
-    name: 'Chandigarh',
-    geoDataFile: `${MAPS_DIR}/chandigarh.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'chandigarh_district',
-  },
-  Chhattisgarh: {
-    name: 'Chhattisgarh',
-    geoDataFile: `${MAPS_DIR}/chhattisgarh.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'chhattisgarh_district',
-  },
-  'Dadra and Nagar Haveli': {
-    name: 'Dadra and Nagar Haveli',
-    geoDataFile: `${MAPS_DIR}/dadranagarhaveli.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'dadranagarhaveli_district',
-  },
-  Delhi: {
-    name: 'Delhi',
-    geoDataFile: `${MAPS_DIR}/delhi.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'delhi_district',
-  },
-  Karnataka: {
-    name: 'Karnataka',
-    geoDataFile: `${MAPS_DIR}/karnataka.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'karnataka_district',
-  },
-  Kerala: {
-    name: 'Kerala',
-    geoDataFile: `${MAPS_DIR}/kerala.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'kerala_district',
-  },
-  Goa: {
-    name: 'Goa',
-    geoDataFile: `${MAPS_DIR}/goa.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'goa_district',
-  },
-  Gujarat: {
-    name: 'Gujarat',
-    geoDataFile: `${MAPS_DIR}/gujarat.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'gujarat_district',
-  },
-  Haryana: {
-    name: 'Haryana',
-    geoDataFile: `${MAPS_DIR}/haryana.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'haryana_district',
-  },
-  'Himachal Pradesh': {
-    name: 'Himachal Pradesh',
-    geoDataFile: `${MAPS_DIR}/himachalpradesh.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'himachalpradesh_district',
-  },
-  'Jammu and Kashmir': {
-    name: 'Jammu and Kashmir',
-    geoDataFile: `${MAPS_DIR}/jammukashmir.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'jammukashmir_district',
-  },
-  Jharkhand: {
-    name: 'Jharkhand',
-    geoDataFile: `${MAPS_DIR}/jharkhand.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'jharkhand_district',
-  },
-  Ladakh: {
-    name: 'Ladakh',
-    geoDataFile: `${MAPS_DIR}/ladakh.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'ladakh_district',
-  },
-  Lakshadweep: {
-    name: 'Lakshadweep',
-    geoDataFile: `${MAPS_DIR}/lakshadweep.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'lakshadweep_district',
-  },
-  'Madhya Pradesh': {
-    name: 'Madhya Pradesh',
-    geoDataFile: `${MAPS_DIR}/madhyapradesh.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'madhyapradesh_district',
-  },
-  Maharashtra: {
-    name: 'Maharashtra',
-    geoDataFile: `${MAPS_DIR}/maharashtra.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'maharashtra_district',
-  },
-  Manipur: {
-    name: 'Manipur',
-    geoDataFile: `${MAPS_DIR}/manipur.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'manipur_district',
-  },
-  Meghalaya: {
-    name: 'Meghalaya',
-    geoDataFile: `${MAPS_DIR}/meghalaya.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'meghalaya_district',
-  },
-  Mizoram: {
-    name: 'Mizoram',
-    geoDataFile: `${MAPS_DIR}/mizoram.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'mizoram_district',
-  },
-  Nagaland: {
-    name: 'Nagaland',
-    geoDataFile: `${MAPS_DIR}/nagaland.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'nagaland_district',
-  },
-  Odisha: {
-    name: 'Odisha',
-    geoDataFile: `${MAPS_DIR}/odisha.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'odisha_district',
-  },
-  Puducherry: {
-    name: 'Puducherry',
-    geoDataFile: `${MAPS_DIR}/puducherry.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'puducherry_district',
-  },
-  Punjab: {
-    name: 'Punjab',
-    geoDataFile: `${MAPS_DIR}/punjab.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'punjab_district',
-  },
-  Rajasthan: {
-    name: 'Rajasthan',
-    geoDataFile: `${MAPS_DIR}/rajasthan.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'rajasthan_district',
-  },
-  Sikkim: {
-    name: 'Sikkim',
-    geoDataFile: `${MAPS_DIR}/sikkim.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'sikkim_district',
-  },
-  'Tamil Nadu': {
-    name: 'Tamil Nadu',
-    geoDataFile: `${MAPS_DIR}/tamilnadu.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'tamilnadu_district',
-  },
-  Telangana: {
-    name: 'Telangana',
-    geoDataFile: `${MAPS_DIR}/telangana.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'telangana_district',
-  },
-  Tripura: {
-    name: 'Tripura',
-    geoDataFile: `${MAPS_DIR}/tripura.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'tripura_district',
-  },
-  Uttarakhand: {
-    name: 'Uttarakhand',
-    geoDataFile: `${MAPS_DIR}/uttarakhand.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'uttarakhand_district',
-  },
-  'Uttar Pradesh': {
-    name: 'Uttar Pradesh',
-    geoDataFile: `${MAPS_DIR}/uttarpradesh.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'uttarpradesh_district',
-  },
+  // Assam: {
+  //   name: 'Assam',
+  //   geoDataFile: `${MAPS_DIR}/assam.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'assam_district',
+  // },
+  // Bihar: {
+  //   name: 'Bihar',
+  //   geoDataFile: `${MAPS_DIR}/bihar.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'bihar_district',
+  // },
+  // Chandigarh: {
+  //   name: 'Chandigarh',
+  //   geoDataFile: `${MAPS_DIR}/chandigarh.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'chandigarh_district',
+  // },
+  // Chhattisgarh: {
+  //   name: 'Chhattisgarh',
+  //   geoDataFile: `${MAPS_DIR}/chhattisgarh.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'chhattisgarh_district',
+  // },
+  // 'Dadra and Nagar Haveli': {
+  //   name: 'Dadra and Nagar Haveli',
+  //   geoDataFile: `${MAPS_DIR}/dadranagarhaveli.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'dadranagarhaveli_district',
+  // },
+  // Delhi: {
+  //   name: 'Delhi',
+  //   geoDataFile: `${MAPS_DIR}/delhi.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'delhi_district',
+  // },
+  // Karnataka: {
+  //   name: 'Karnataka',
+  //   geoDataFile: `${MAPS_DIR}/karnataka.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'karnataka_district',
+  // },
+  // Kerala: {
+  //   name: 'Kerala',
+  //   geoDataFile: `${MAPS_DIR}/kerala.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'kerala_district',
+  // },
+  // Goa: {
+  //   name: 'Goa',
+  //   geoDataFile: `${MAPS_DIR}/goa.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'goa_district',
+  // },
+  // Gujarat: {
+  //   name: 'Gujarat',
+  //   geoDataFile: `${MAPS_DIR}/gujarat.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'gujarat_district',
+  // },
+  // Haryana: {
+  //   name: 'Haryana',
+  //   geoDataFile: `${MAPS_DIR}/haryana.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'haryana_district',
+  // },
+  // 'Himachal Pradesh': {
+  //   name: 'Himachal Pradesh',
+  //   geoDataFile: `${MAPS_DIR}/himachalpradesh.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'himachalpradesh_district',
+  // },
+  // 'Jammu and Kashmir': {
+  //   name: 'Jammu and Kashmir',
+  //   geoDataFile: `${MAPS_DIR}/jammukashmir.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'jammukashmir_district',
+  // },
+  // Jharkhand: {
+  //   name: 'Jharkhand',
+  //   geoDataFile: `${MAPS_DIR}/jharkhand.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'jharkhand_district',
+  // },
+  // Ladakh: {
+  //   name: 'Ladakh',
+  //   geoDataFile: `${MAPS_DIR}/ladakh.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'ladakh_district',
+  // },
+  // Lakshadweep: {
+  //   name: 'Lakshadweep',
+  //   geoDataFile: `${MAPS_DIR}/lakshadweep.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'lakshadweep_district',
+  // },
+  // 'Madhya Pradesh': {
+  //   name: 'Madhya Pradesh',
+  //   geoDataFile: `${MAPS_DIR}/madhyapradesh.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'madhyapradesh_district',
+  // },
+  // Maharashtra: {
+  //   name: 'Maharashtra',
+  //   geoDataFile: `${MAPS_DIR}/maharashtra.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'maharashtra_district',
+  // },
+  // Manipur: {
+  //   name: 'Manipur',
+  //   geoDataFile: `${MAPS_DIR}/manipur.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'manipur_district',
+  // },
+  // Meghalaya: {
+  //   name: 'Meghalaya',
+  //   geoDataFile: `${MAPS_DIR}/meghalaya.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'meghalaya_district',
+  // },
+  // Mizoram: {
+  //   name: 'Mizoram',
+  //   geoDataFile: `${MAPS_DIR}/mizoram.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'mizoram_district',
+  // },
+  // Nagaland: {
+  //   name: 'Nagaland',
+  //   geoDataFile: `${MAPS_DIR}/nagaland.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'nagaland_district',
+  // },
+  // Odisha: {
+  //   name: 'Odisha',
+  //   geoDataFile: `${MAPS_DIR}/odisha.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'odisha_district',
+  // },
+  // Puducherry: {
+  //   name: 'Puducherry',
+  //   geoDataFile: `${MAPS_DIR}/puducherry.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'puducherry_district',
+  // },
+  // Punjab: {
+  //   name: 'Punjab',
+  //   geoDataFile: `${MAPS_DIR}/punjab.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'punjab_district',
+  // },
+  // Rajasthan: {
+  //   name: 'Rajasthan',
+  //   geoDataFile: `${MAPS_DIR}/rajasthan.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'rajasthan_district',
+  // },
+  // Sikkim: {
+  //   name: 'Sikkim',
+  //   geoDataFile: `${MAPS_DIR}/sikkim.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'sikkim_district',
+  // },
+  // 'Tamil Nadu': {
+  //   name: 'Tamil Nadu',
+  //   geoDataFile: `${MAPS_DIR}/tamilnadu.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'tamilnadu_district',
+  // },
+  // Telangana: {
+  //   name: 'Telangana',
+  //   geoDataFile: `${MAPS_DIR}/telangana.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'telangana_district',
+  // },
+  // Tripura: {
+  //   name: 'Tripura',
+  //   geoDataFile: `${MAPS_DIR}/tripura.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'tripura_district',
+  // },
+  // Uttarakhand: {
+  //   name: 'Uttarakhand',
+  //   geoDataFile: `${MAPS_DIR}/uttarakhand.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'uttarakhand_district',
+  // },
+  // 'Uttar Pradesh': {
+  //   name: 'Uttar Pradesh',
+  //   geoDataFile: `${MAPS_DIR}/uttarpradesh.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'uttarpradesh_district',
+  // },
 
-  'West Bengal': {
-    name: 'West Bengal',
-    geoDataFile: `${MAPS_DIR}/westbengal.json`,
-    mapType: MAP_TYPES.STATE,
-    graphObjectName: 'westbengal_district',
-  },
+  // 'West Bengal': {
+  //   name: 'West Bengal',
+  //   geoDataFile: `${MAPS_DIR}/westbengal.json`,
+  //   mapType: MAP_TYPES.STATE,
+  //   graphObjectName: 'westbengal_district',
+  // },
 };
 
 const getRegionFromState = (state) => {
-  console.log(state);
+  // console.log(state);
   if (!state) return;
   const region = {...state};
-  if (!region.name) region.name = region.state;
-  console.log(region);
+  if (!region.name) region.name = region.Ward;
+  // console.log(region);
   return region;
 };
 
 const getRegionFromDistrict = (districtData, name) => {
   if (!districtData) return;
   const region = {...districtData};
-  if (!region.name) region.name = name;
+  if (!region.name) region.name = region.name;
   return region;
 };
 
@@ -263,8 +263,14 @@ function MapExplorer({
   regionHighlighted,
   onMapHighlightChange,
 }) {
+
+  //****************************** 
+  // states == wards
+  //****************************** 
+
   const [selectedRegion, setSelectedRegion] = useState({});
   const [panelRegion, setPanelRegion] = useState(getRegionFromState(states[0]));
+  console.log(panelRegion);
   const [currentHoveredRegion, setCurrentHoveredRegion] = useState(
     getRegionFromState(states[0])
   );
@@ -348,7 +354,7 @@ function MapExplorer({
     }
     const isState = !('district' in regionHighlighted);
     if (isState) {
-      const newMap = mapMeta['India'];
+      const newMap = mapMeta['Mumbai'];
       setCurrentMap(newMap);
       const region = getRegionFromState(regionHighlighted.state);
       setHoveredRegion(region.name, newMap);
@@ -414,9 +420,9 @@ function MapExplorer({
 
       <div className="map-stats">
         <div className="stats fadeInUp" style={{animationDelay: '2s'}}>
-          <h5>{window.innerWidth <= 769 ? 'Cnfmd' : 'Confirmed'}</h5>
+          <h5>{window.innerWidth <= 769 ? 'VCongAr' : 'Very Cong'}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.confirmed)}</h1>
+            <h1>{formatNumber(panelRegion["Number_of_Cases-_Very_Congested_Area"])}</h1>
             <h6>{}</h6>
           </div>
         </div>
@@ -425,9 +431,9 @@ function MapExplorer({
           className="stats is-blue fadeInUp"
           style={{animationDelay: '2.1s'}}
         >
-          <h5>{window.innerWidth <= 769 ? 'Actv' : 'Active'}</h5>
+          <h5>{window.innerWidth <= 769 ? 'MedCong' : 'Med Cong'}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.active)}</h1>
+            <h1>{formatNumber(panelRegion["Number_of_Cases-_Medium_Congested"])}</h1>
             <h6>{}</h6>
           </div>
         </div>
@@ -436,48 +442,12 @@ function MapExplorer({
           className="stats is-green fadeInUp"
           style={{animationDelay: '2.2s'}}
         >
-          <h5>{window.innerWidth <= 769 ? 'Rcvrd' : 'Recovered'}</h5>
+          <h5>{window.innerWidth <= 769 ? 'Alone' : 'Standalone'}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.recovered)}</h1>
+            <h1>{formatNumber(panelRegion["Number_of_Cases-_Standalone_Structure"])}</h1>
             <h6>{}</h6>
           </div>
         </div>
-
-        <div
-          className="stats is-gray fadeInUp"
-          style={{animationDelay: '2.3s'}}
-        >
-          <h5>{window.innerWidth <= 769 ? 'Dcsd' : 'Deceased'}</h5>
-          <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.deaths)}</h1>
-            <h6>{}</h6>
-          </div>
-        </div>
-
-        {
-          <div
-            className="stats is-purple tested fadeInUp"
-            style={{animationDelay: '2.4s'}}
-          >
-            <h5>{window.innerWidth <= 769 ? 'Tested' : 'Tested'}</h5>
-            <div className="stats-bottom">
-              <h1>{formatNumber(testObj?.totaltested)}</h1>
-            </div>
-            <h6 className="timestamp">
-              {!isNaN(parse(testObj?.updatedon, 'dd/MM/yyyy', new Date()))
-                ? `As of ${format(
-                    parse(testObj?.updatedon, 'dd/MM/yyyy', new Date()),
-                    'dd MMM'
-                  )}`
-                : ''}
-            </h6>
-            {testObj?.totaltested?.length > 1 && (
-              <a href={testObj.source} target="_noblank">
-                <Icon.Link />
-              </a>
-            )}
-          </div>
-        }
       </div>
 
       <div className="meta fadeInUp" style={{animationDelay: '2.4s'}}>
