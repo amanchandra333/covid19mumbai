@@ -109,8 +109,7 @@ function ChoroplethMap({
             Number(
               parseFloat(100 * (value / (statistic.total || 0.001))).toFixed(2)
             ).toString() +
-            '% from ' +
-            toTitleCase(d.properties[propertyField])
+            '% from ' + d.properties[propertyField]
           );
         });
 
@@ -210,10 +209,7 @@ function ChoroplethMap({
   const highlightRegionInMap = (name) => {
     const paths = d3.selectAll('.path-region');
     paths.classed('map-hover', (d, i, nodes) => {
-      const propertyField =
-        'district' in d.properties
-          ? propertyFieldMap['state']
-          : propertyFieldMap['country'];
+      const propertyField = 'st_nm';
       if (name === d.properties[propertyField]) {
         nodes[i].parentNode.appendChild(nodes[i]);
         return true;

@@ -11,7 +11,6 @@ import {
 } from '../utils/common-functions';
 
 import Table from './table';
-import Level from './level';
 import MapExplorer from './mapexplorer';
 import TimeSeries from './timeseries';
 import Minigraph from './minigraph';
@@ -55,7 +54,6 @@ function Home(props) {
         axios.get('https://script.google.com/macros/s/AKfycbwEZfKz70mGL1YPW9qBtyx9L3IoLqyhLl46pnGb3kkqIcip2A/exec?id=17jRnQ8hS764Q7yqZ2l2qUIO6LYECWrKLsLUuYl2fYxI&sheet=COVID-19%20Cases')
       ]);
       setStates(response.data.statewise);
-      console.log(mumbaiWardResponse.data);
       const wardData = parseWardData(mumbaiWardResponse.data);
       setmumbaiWardData(wardData);
       console.log(wardData);
@@ -135,7 +133,7 @@ function Home(props) {
                 onMapHighlightChange={onMapHighlightChange}
               />
 
-              
+
             </React.Fragment>
           )}
         </div>
