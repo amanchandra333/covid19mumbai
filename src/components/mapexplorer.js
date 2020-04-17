@@ -269,7 +269,7 @@ function MapExplorer({
     getRegionFromState(states[0])
   );
   const [testObj, setTestObj] = useState({});
-  const [currentMap, setCurrentMap] = useState(mapMeta.India);
+  const [currentMap, setCurrentMap] = useState(mapMeta.Mumbai);
 
   const [statistic, currentMapData] = useMemo(() => {
     const statistic = {total: 0, maxConfirmed: 0};
