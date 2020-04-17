@@ -7,6 +7,7 @@ import {
   formatDateAbsolute,
   preprocessTimeseries,
   parseStateTimeseries,
+  parseWardData
 } from '../utils/common-functions';
 
 import Table from './table';
@@ -18,6 +19,7 @@ import Minigraph from './minigraph';
 function Home(props) {
   const [states, setStates] = useState([]);
   const [stateDistrictWiseData, setStateDistrictWiseData] = useState({});
+  const [mumbaiWardData, setmumbaiWardData] = useState({});
   const [stateTestData, setStateTestData] = useState({});
   const [fetched, setFetched] = useState(false);
   const [graphOption, setGraphOption] = useState(1);
@@ -43,7 +45,7 @@ function Home(props) {
         {data: statesDailyResponse},
         updateLogResponse,
         stateTestResponse,
-        {data: mumbaiWardResponse}
+        mumbaiWardResponse
       ] = await Promise.all([
         axios.get('https://api.covid19india.org/data.json'),
         axios.get('https://api.covid19india.org/state_district_wise.json'),
@@ -53,6 +55,10 @@ function Home(props) {
         axios.get('https://script.google.com/macros/s/AKfycbwEZfKz70mGL1YPW9qBtyx9L3IoLqyhLl46pnGb3kkqIcip2A/exec?id=17jRnQ8hS764Q7yqZ2l2qUIO6LYECWrKLsLUuYl2fYxI&sheet=COVID-19%20Cases')
       ]);
       setStates(response.data.statewise);
+      console.log(mumbaiWardResponse.data);
+      const wardData = parseWardData(mumbaiWardResponse.data);
+      setmumbaiWardData(wardData);
+      console.log(wardData);
       const ts = parseStateTimeseries(statesDailyResponse);
       ts['TT'] = preprocessTimeseries(response.data.cases_time_series); // TT -> India
       setTimeseries(ts);
@@ -61,7 +67,6 @@ function Home(props) {
       setStateDistrictWiseData(stateDistrictWiseResponse.data);
       setActivityLog(updateLogResponse.data);
       setFetched(true);
-      console.log(mumbaiWardResponse);
     } catch (err) {
       console.log(err);
     }
@@ -123,7 +128,7 @@ function Home(props) {
             <React.Fragment>
               <MapExplorer
                 forwardRef={refs[1]}
-                states={states}
+                states={mumbaiWardData}
                 stateDistrictWiseData={stateDistrictWiseData}
                 stateTestData={stateTestData}
                 regionHighlighted={regionHighlighted}

@@ -55,6 +55,12 @@ const stateCodes = {
   PY: 'Puducherry',
 };
 
+//  to acces the fields in the JSON created from sheet
+const VERY_CONGESTED_FIELD = "Number_of_Cases-_Very_Congested_Area";
+const MEDIUM_CONGESTED_FIELD = "Number_of_Cases-_Medium_Congested";
+const STANDALONE_FIELD = "Number_of_Cases-_Standalone_Structure";
+const WARD = "Ward";
+
 export const getStateName = (code) => {
   return stateCodes[code.toUpperCase()];
 };
@@ -122,6 +128,21 @@ export const formatNumber = (value) => {
   return isNaN(value) ? '-' : numberFormatter.format(value);
 };
 
+// Parse the data to get the total infected for all the regions 
+export const parseWardData  = (wards) => {
+  wards = wards["COVID-19 Cases"];
+  let veryCongestedCases = 0, medCongestedCases = 0, standaloneCases = 0;
+  for (let i = 0; i < wards.length; i += 1) {
+    veryCongestedCases += (wards[i][VERY_CONGESTED_FIELD] || 0);
+    medCongestedCases += (wards[i][MEDIUM_CONGESTED_FIELD] || 0);
+    standaloneCases += (wards[i][STANDALONE_FIELD] || 0);
+  }
+  wards[0][WARD] = "Total";
+  wards[0][VERY_CONGESTED_FIELD] = veryCongestedCases;
+  wards[0][MEDIUM_CONGESTED_FIELD] = medCongestedCases;
+  wards[0][STANDALONE_FIELD] = standaloneCases;
+  return wards;
+}
 export const parseStateTimeseries = ({states_daily: data}) => {
   const statewiseSeries = Object.keys(stateCodes).reduce((a, c) => {
     a[c] = [];
