@@ -1066,6 +1066,15 @@ table {
         h1 { color: $green; }
       }
 
+      &.is-orange {
+        background: $orange-light;
+        h5,
+        h6 { color: $orange-mid; }
+
+        h1 { color: $orange; }
+      }
+
+
       &.is-blue {
         background: $blue-light;
         h5,
