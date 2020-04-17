@@ -240,9 +240,11 @@ const mapMeta = {
 };
 
 const getRegionFromState = (state) => {
+  console.log(state);
   if (!state) return;
   const region = {...state};
   if (!region.name) region.name = region.state;
+  console.log(region);
   return region;
 };
 
