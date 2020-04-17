@@ -62,7 +62,6 @@ function MapExplorer({
       if (state.Ward === 'Total') {
         return acc;
       }
-      // console.log(state);
       const a = (isNaN(parseInt(state['Number_of_Cases-_Very_Congested_Area'])) ?
                 0 : parseInt(state['Number_of_Cases-_Very_Congested_Area']));
       const b = (isNaN(parseInt(state['Number_of_Cases-_Medium_Congested'])) ?
@@ -72,42 +71,17 @@ function MapExplorer({
       acc[state.Ward] = a+b+c;
       return acc;
     }, {});
-    console.log(currentMapData);
     return [statistic, currentMapData];
   }, [currentMap, states, stateDistrictWiseData]);
 
   const setHoveredRegion = useCallback(
     (name, currentMap) => {
-      // if (currentMap.mapType === MAP_TYPES.COUNTRY) {
-        console.log(name);
-        console.log(currentMap)
-        const region = getRegionFromState(
-          states.find((state) => name === state.Ward)
-        );
-        console.log(region);
-        setCurrentHoveredRegion(region);
-        setPanelRegion(region);
-        onMapHighlightChange(region);
-      // } else if (currentMap.mapType === MAP_TYPES.STATE) {
-      //   const state = stateDistrictWiseData[currentMap.name] || {
-      //     districtData: {},
-      //   };
-      //   let districtData = state.districtData[name];
-      //   if (!districtData) {
-      //     districtData = {
-      //       confirmed: 0,
-      //       active: 0,
-      //       deaths: 0,
-      //       recovered: 0,
-      //     };
-      //   }
-      //   setCurrentHoveredRegion(getRegionFromDistrict(districtData, name));
-      //   const panelRegion = getRegionFromState(
-      //     states.find((state) => currentMap.name === state.state)
-      //   );
-      //   setPanelRegion(panelRegion);
-      //   onMapHighlightChange(panelRegion);
-      // }
+      const region = getRegionFromState(
+        states.find((state) => name === state.Ward)
+      );
+      setCurrentHoveredRegion(region);
+      setPanelRegion(region);
+      onMapHighlightChange(region);
     },
     [states, stateDistrictWiseData, onMapHighlightChange]
   );
