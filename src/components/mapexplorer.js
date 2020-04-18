@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import ChoroplethMap from './choropleth';
-import * as d3 from 'd3';
 import {MAP_TYPES, MAPS_DIR, COEFF} from '../constants';
 import {formatDate, formatDateAbsolute} from '../utils/common-functions';
 import {formatDistance, format, parse} from 'date-fns';
@@ -105,30 +104,18 @@ function MapExplorer({
     [states, onMapHighlightChange]
   );
 
-  // useEffect(() => {
-  //   if (regionHighlighted === undefined) {
-  //     return;
-  //   } else if (regionHighlighted === null) {
-  //     setSelectedRegion(null);
-  //     return;
-  //   }
-  //   const isState = !('district' in regionHighlighted);
-  //   if (isState) {
-  //     const newMap = mapMeta['Mumbai'];
-  //     setCurrentMap(newMap);
-  //     const region = getRegionFromState(regionHighlighted.state);
-  //     setHoveredRegion(region.name, newMap);
-  //     setSelectedRegion(region.name);
-  //   } else {
-  //     const newMap = mapMeta[regionHighlighted.state.state];
-  //     if (!newMap) {
-  //       return;
-  //     }
-  //     setCurrentMap(newMap);
-  //     setHoveredRegion(regionHighlighted.district, newMap);
-  //     setSelectedRegion(regionHighlighted.district);
-  //   }
-  // }, [regionHighlighted, setHoveredRegion]);
+  useEffect(() => {
+    if (regionHighlighted === undefined) {
+      return;
+    } else if (regionHighlighted === null) {
+      setSelectedRegion(null);
+      return;
+    }
+    const region = getRegionFromState(regionHighlighted.state);
+    console.log(region);
+    setHoveredRegion(region.Ward, currentMap);
+    setSelectedRegion(region.Ward);
+  }, [regionHighlighted, setHoveredRegion]);
 
   const {name, lastupdatedtime} = currentHoveredRegion;
 

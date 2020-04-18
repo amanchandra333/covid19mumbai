@@ -30,6 +30,7 @@ function Row(props) {
     <React.Fragment>
       <tr
         className={props.total ? 'state is-total' : 'state'}
+        onMouseEnter={() => props.onHighlightState?.(state, props.index)}
         style={{background: props.index % 2 === 0 ? '#f8f9fa' : ''}}
       >
         <td style={{fontWeight: 600}}>

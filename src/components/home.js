@@ -41,10 +41,6 @@ function Home(props) {
     if (!state && !index) return setRegionHighlighted(null);
     setRegionHighlighted({state, index});
   };
-  const onHighlightDistrict = (district, state, index) => {
-    if (!state && !index && !district) return setRegionHighlighted(null);
-    setRegionHighlighted({district, state, index});
-  };
 
   const onMapHighlightChange = useCallback(({statecode}) => {
     setActiveStateCode(statecode);
@@ -78,7 +74,6 @@ function Home(props) {
             <Table
               states={mumbaiWardData}
               onHighlightState={onHighlightState}
-              onHighlightDistrict={onHighlightDistrict}
             />
           )}
           </div>
