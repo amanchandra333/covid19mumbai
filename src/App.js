@@ -22,12 +22,12 @@ function App() {
       displayName: 'Home',
       animationDelayForNavbar: 0.2,
     },
-    {
-      pageLink: '/deepdive',
-      view: DeepDive,
-      displayName: 'Deep Dive',
-      animationDelayForNavbar: 0.4,
-    },
+    // {
+    //   pageLink: '/deepdive',
+    //   view: DeepDive,
+    //   displayName: 'Deep Dive',
+    //   animationDelayForNavbar: 0.4,
+    // },
   ];
 
   return (

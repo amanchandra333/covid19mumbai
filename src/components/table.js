@@ -2,33 +2,29 @@ import React, {useState, useEffect} from 'react';
 
 import Row from './row';
 
+const VERY_CONGESTED_FIELD = "Number_of_Cases-_Very_Congested_Area";
+const MEDIUM_CONGESTED_FIELD = "Number_of_Cases-_Medium_Congested";
+const STANDALONE_FIELD = "Number_of_Cases-_Standalone_Structure";
+
 function Table(props) {
-  const [states, setStates] = useState(props.states);
+  const [states, setStates] = useState(props.states.slice(2));
+  console.log(states);
   const [revealedStates, setRevealedStates] = useState({});
-  const [districts, setDistricts] = useState({});
   const [count, setCount] = useState(0);
   const [sortData, setSortData] = useState({
     sortColumn: localStorage.getItem('state.sortColumn')
       ? localStorage.getItem('state.sortColumn')
-      : 'confirmed',
+      : 'TOTAL',
     isAscending: localStorage.getItem('state.isAscending')
       ? localStorage.getItem('state.isAscending') === 'true'
       : false,
   });
 
   useEffect(() => {
-    if (props.summary === true) {
-      setStates(props.states.slice(0, 9));
-    } else {
-      setStates(props.states);
-    }
-  }, [props.states, props.summary]);
-
-  useEffect(() => {
     if (props.states[0]) {
       setRevealedStates(
         props.states.reduce((a, state) => {
-          return {...a, [state.state]: false};
+          return {...a, [state.Ward]: false};
         }, {})
       );
     }
@@ -36,23 +32,19 @@ function Table(props) {
 
   useEffect(() => {
     if (states.length > 0) {
-      // slice to ignore the first item which is the total count
-      setCount(states.slice(1).filter((s) => s && s.confirmed > 0).length);
+      setCount(states.filter((s) => s && s["TOTAL"] > 0).length);
     }
   }, [states]);
 
-  useEffect(() => {
-    setDistricts(props.stateDistrictWiseData);
-  }, [props.stateDistrictWiseData]);
 
   const doSort = (e, props) => {
-    const totalRow = states.splice(0, 1);
+    const totalRow = states.splice(0,1);
     states.sort((StateData1, StateData2) => {
       const sortColumn = sortData.sortColumn;
       let value1 = StateData1[sortColumn];
       let value2 = StateData2[sortColumn];
 
-      if (sortColumn !== 'state') {
+      if (sortColumn !== 'Ward') {
         value1 = parseInt(StateData1[sortColumn]);
         value2 = parseInt(StateData2[sortColumn]);
       }
@@ -60,13 +52,13 @@ function Table(props) {
       if (sortData.isAscending) {
         return value1 > value2
           ? 1
-          : value1 === value2 && StateData1['state'] > StateData2['state']
+          : value1 === value2 && StateData1['Ward'] > StateData2['Ward']
           ? 1
           : -1;
       } else {
         return value1 < value2
           ? 1
-          : value1 === value2 && StateData1['state'] > StateData2['state']
+          : value1 === value2 && StateData1['Ward'] > StateData2['Ward']
           ? 1
           : -1;
       }
@@ -77,12 +69,11 @@ function Table(props) {
   const handleSort = (e, props) => {
     const currentsortColumn = e.currentTarget
       .querySelector('abbr')
-      .getAttribute('title')
-      .toLowerCase();
+      .getAttribute('title');
     const isAscending =
       sortData.sortColumn === currentsortColumn
         ? !sortData.isAscending
-        : sortData.sortColumn === 'state';
+        : sortData.sortColumn === 'Ward';
     setSortData({
       sortColumn: currentsortColumn,
       isAscending: isAscending,
@@ -110,11 +101,11 @@ function Table(props) {
               onClick={(e) => handleSort(e, props)}
             >
               <div className="heading-content">
-                <abbr title="State">State/UT</abbr>
+                <abbr title="Ward">Ward</abbr>
                 <div
                   style={{
                     display:
-                      sortData.sortColumn === 'state' ? 'initial' : 'none',
+                      sortData.sortColumn === 'Ward' ? 'initial' : 'none',
                   }}
                 >
                   {sortData.isAscending ? (
@@ -129,18 +120,18 @@ function Table(props) {
               <div className="heading-content">
                 <abbr
                   className={`${window.innerWidth <= 769 ? 'is-cherry' : ''}`}
-                  title="Confirmed"
+                  title="Number_of_Cases-_Very_Congested_Area"
                 >
                   {window.innerWidth <= 769
                     ? window.innerWidth <= 375
-                      ? 'C'
-                      : 'Cnfmd'
-                    : 'Confirmed'}
+                      ? 'VC'
+                      : 'VCngstd'
+                    : 'Very Congested'}
                 </abbr>
                 <div
                   style={{
                     display:
-                      sortData.sortColumn === 'confirmed' ? 'initial' : 'none',
+                      sortData.sortColumn === 'Number_of_Cases-_Very_Congested_Area' ? 'initial' : 'none',
                   }}
                 >
                   {sortData.isAscending ? (
@@ -155,18 +146,18 @@ function Table(props) {
               <div className="heading-content">
                 <abbr
                   className={`${window.innerWidth <= 769 ? 'is-blue' : ''}`}
-                  title="Active"
+                  title="Number_of_Cases-_Medium_Congested"
                 >
                   {window.innerWidth <= 769
                     ? window.innerWidth <= 375
-                      ? 'A'
-                      : 'Actv'
-                    : 'Active'}
+                      ? 'MC'
+                      : 'MCngstd'
+                    : 'Med Congested'}
                 </abbr>
                 <div
                   style={{
                     display:
-                      sortData.sortColumn === 'active' ? 'initial' : 'none',
+                      sortData.sortColumn === 'Number_of_Cases-_Medium_Congested' ? 'initial' : 'none',
                   }}
                 >
                   {sortData.isAscending ? (
@@ -181,23 +172,23 @@ function Table(props) {
               <div className="heading-content">
                 <abbr
                   className={`${window.innerWidth <= 769 ? 'is-green' : ''}`}
-                  title="Recovered"
+                  title="Number_of_Cases-_Standalone_Structure"
                 >
                   {window.innerWidth <= 769
                     ? window.innerWidth <= 375
-                      ? 'R'
-                      : 'Rcvrd'
-                    : 'Recovered'}
+                      ? 'S'
+                      : 'Stndln'
+                    : 'Standalone'}
                 </abbr>
                 <div
                   className={
-                    sortData.sortColumn === 'recovered' ? 'sort-black' : ''
+                    sortData.sortColumn === 'Number_of_Cases-_Standalone_Structure' ? 'sort-black' : ''
                   }
                 ></div>
                 <div
                   style={{
                     display:
-                      sortData.sortColumn === 'recovered' ? 'initial' : 'none',
+                      sortData.sortColumn === 'Number_of_Cases-_Standalone_Structure' ? 'initial' : 'none',
                   }}
                 >
                   {sortData.isAscending ? (
@@ -212,18 +203,18 @@ function Table(props) {
               <div className="heading-content">
                 <abbr
                   className={`${window.innerWidth <= 769 ? 'is-gray' : ''}`}
-                  title="Deaths"
+                  title="TOTAL"
                 >
                   {window.innerWidth <= 769
                     ? window.innerWidth <= 375
-                      ? 'D'
-                      : 'Dcsd'
-                    : 'Deceased'}
+                      ? 'T'
+                      : 'Total'
+                    : 'Total'}
                 </abbr>
                 <div
                   style={{
                     display:
-                      sortData.sortColumn === 'deaths' ? 'initial' : 'none',
+                      sortData.sortColumn === 'TOTAL' ? 'initial' : 'none',
                   }}
                 >
                   {sortData.isAscending ? (
@@ -239,22 +230,13 @@ function Table(props) {
 
         <tbody>
           {states.map((state, index) => {
-            if (index !== 0 && state.confirmed > 0) {
+            if (index !== 0 && state.TOTAL > 0) {
               return (
                 <Row
                   key={index}
-                  index={index}
                   state={state}
                   total={false}
-                  reveal={revealedStates[state.state]}
-                  districts={
-                    state.state in districts
-                      ? districts[state.state].districtData
-                      : []
-                  }
                   onHighlightState={props.onHighlightState}
-                  onHighlightDistrict={props.onHighlightDistrict}
-                  handleReveal={handleReveal}
                 />
               );
             }

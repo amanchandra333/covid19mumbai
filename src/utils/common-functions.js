@@ -136,11 +136,14 @@ export const parseWardData  = (wards) => {
     veryCongestedCases += (wards[i][VERY_CONGESTED_FIELD] || 0);
     medCongestedCases += (wards[i][MEDIUM_CONGESTED_FIELD] || 0);
     standaloneCases += (wards[i][STANDALONE_FIELD] || 0);
+    wards[i]["TOTAL"] = (wards[i][VERY_CONGESTED_FIELD] || 0) + (wards[i][MEDIUM_CONGESTED_FIELD] || 0)
+                        + (wards[i][STANDALONE_FIELD] || 0);
   }
   wards[0][WARD] = "Total";
   wards[0][VERY_CONGESTED_FIELD] = veryCongestedCases;
   wards[0][MEDIUM_CONGESTED_FIELD] = medCongestedCases;
   wards[0][STANDALONE_FIELD] = standaloneCases;
+  wards[0]["TOTAL"] = veryCongestedCases + medCongestedCases + standaloneCases;
   return wards;
 }
 export const parseStateTimeseries = ({states_daily: data}) => {
