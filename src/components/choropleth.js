@@ -2,14 +2,12 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import * as d3 from 'd3';
 import {legendColor} from 'd3-svg-legend';
 import * as topojson from 'topojson';
-import {MAP_TYPES} from '../constants';
 
 function ChoroplethMap({
   statistic,
   mapData,
   setHoveredRegion,
   mapMeta,
-  changeMap,
   selectedRegion,
   setSelectedRegion,
 }) {
@@ -40,17 +38,7 @@ function ChoroplethMap({
       );
 
       const projection = d3.geoMercator();
-
-      if (mapMeta.mapType === MAP_TYPES.COUNTRY)
-        projection.fitSize([width, height], topology);
-      else
-        projection.fitExtent(
-          [
-            [90, 20],
-            [width, height],
-          ],
-          topology
-        );
+      projection.fitSize([width, height], topology);
 
       const path = d3.geoPath(projection);
 
@@ -91,10 +79,6 @@ function ChoroplethMap({
           if (onceTouchedRegion) {
             return;
           }
-          if (mapMeta.mapType === MAP_TYPES.STATE) {
-            return;
-          }
-          changeMap(d.properties[propertyField], mapMeta.mapType);
         })
         .style('cursor', 'pointer')
         .append('title')
@@ -123,12 +107,10 @@ function ChoroplethMap({
       mapMeta,
       statistic.total,
       statistic.maxConfirmed,
-      changeMap,
       setHoveredRegion,
       setSelectedRegion,
     ]
   );
-
 
   const renderData = useCallback(() => {
     const svg = d3.select(choroplethMap.current);

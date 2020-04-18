@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import ChoroplethMap from './choropleth';
+import * as d3 from 'd3';
 import {MAP_TYPES, MAPS_DIR, COEFF} from '../constants';
 import {formatDate, formatDateAbsolute} from '../utils/common-functions';
 import {formatDistance, format, parse} from 'date-fns';
@@ -18,6 +19,34 @@ const mapMeta = {
     mapType: MAP_TYPES.COUNTRY,
     graphObjectName: 'india',
   },
+};
+
+const population = {
+  "A": 210847,
+  "B": 140633,
+  "C": 202922,
+  "D": 382841,
+  "E": 440335,
+  "F/N": 524393,
+  "F/S": 396122,
+  "G/N": 582007,
+  "G/S": 457931,
+  "H/E": 580835,
+  "H/W": 337391,
+  "K/E": 810002,
+  "K/W": 700680,
+  "L": 778218,
+  "M/E": 674850,
+  "M/W": 414040,
+  "N": 619556,
+  "P/N": 796775,
+  "P/S": 437849,
+  "R/C": 513077,
+  "R/N": 363827,
+  "R/S": 589886,
+  "S": 691227,
+  "T": 330195,
+  Total: 11976439,
 };
 
 const getRegionFromState = (state) => {
@@ -57,9 +86,10 @@ function MapExplorer({
                       0 : parseInt(state['Number_of_Cases-_Medium_Congested']));
       const n3 = (isNaN(parseInt(state['Number_of_Cases-_Standalone_Structure'])) ?
                 0 : parseInt(state['Number_of_Cases-_Standalone_Structure']));
-      acc[state.Ward] = n1*COEFF.N1+n2*COEFF.N3+n3*COEFF.N3;
+      acc[state.Ward] = n1*COEFF.N1+n2*COEFF.N3+n3*COEFF.N3/population[state.Ward];
       return acc;
     }, {});
+    console.log(currentMapData);
     return [statistic, currentMapData];
   }, [currentMap, states]);
 
@@ -99,29 +129,6 @@ function MapExplorer({
   //     setSelectedRegion(regionHighlighted.district);
   //   }
   // }, [regionHighlighted, setHoveredRegion]);
-
-  const switchMapToState = useCallback(
-    (name) => {
-  //     const newMap = mapMeta[name];
-  //     if (!newMap) {
-  //       return;
-  //     }
-  //     setCurrentMap(newMap);
-  //     setSelectedRegion(null);
-  //     if (newMap.mapType === MAP_TYPES.COUNTRY) {
-  //       setHoveredRegion(states[0].state, newMap);
-  //     } else if (newMap.mapType === MAP_TYPES.STATE) {
-  //       const {districtData} = stateDistrictWiseData[name] || {};
-  //       const topDistrict = Object.keys(districtData)
-  //         .filter((name) => name !== 'Unknown')
-  //         .sort((a, b) => {
-  //           return districtData[b].confirmed - districtData[a].confirmed;
-  //         })[0];
-  //       setHoveredRegion(topDistrict, newMap);
-  //     }
-    },
-    [setHoveredRegion, states]
-  );
 
   const {name, lastupdatedtime} = currentHoveredRegion;
 
@@ -206,7 +213,6 @@ function MapExplorer({
         mapMeta={currentMap}
         mapData={currentMapData}
         setHoveredRegion={setHoveredRegion}
-        changeMap={switchMapToState}
         selectedRegion={selectedRegion}
         setSelectedRegion={setSelectedRegion}
       />
