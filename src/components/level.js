@@ -5,11 +5,19 @@ import {formatNumber} from '../utils/common-functions';
 const VERY_CONGESTED_FIELD = "Number_of_Cases-_Very_Congested_Area";
 const MEDIUM_CONGESTED_FIELD = "Number_of_Cases-_Medium_Congested";
 const STANDALONE_FIELD = "Number_of_Cases-_Standalone_Structure";
-const WARD = "Ward";
+const TOTAL = "TOTAL";
 
 function Level(props) {
   return (
     <div className="Level">
+    <div
+        className="level-item is-cherry fadeInUp"
+        style={{animationDelay: '1s'}}
+      >
+        <h5>Total Affected</h5>
+        <h1>{formatNumber(props.data[TOTAL])} </h1>
+      </div> 
+
       <div
         className="level-item is-cherry fadeInUp"
         style={{animationDelay: '1s'}}

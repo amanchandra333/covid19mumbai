@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef, useCallback} from 'react';
 import axios from 'axios';
 import {formatDistance, format} from 'date-fns';
 import Level from './level'
+import Table from './table'
 
 import {
   formatDate,
@@ -29,7 +30,7 @@ function Home(props) {
       const [mumbaiWardResponse] = await Promise.all([axios.get('https://script.google.com/macros/s/AKfycbwEZfKz70mGL1YPW9qBtyx9L3IoLqyhLl46pnGb3kkqIcip2A/exec?id=17jRnQ8hS764Q7yqZ2l2qUIO6LYECWrKLsLUuYl2fYxI&sheet=COVID-19%20Cases')]);
       const wardData = parseWardData(mumbaiWardResponse.data);
       setmumbaiWardData(wardData);
-      // setLastUpdated(wardData[0].lastupdatedtime);
+      setLastUpdated(wardData[0]["Date_Entered"]);
       setFetched(true);
     } catch (err) {
       console.log(err);
@@ -63,12 +64,7 @@ function Home(props) {
               <div className="last-update">
                 <h6>Last Updated</h6>
                 <h6 style={{color: '#28a745', fontWeight: 600}}>
-                  {isNaN(Date.parse(formatDate(lastUpdated)))
-                    ? ''
-                    : formatDistance(
-                        new Date(formatDate(lastUpdated)),
-                        new Date()
-                      ) + ' Ago'}
+                  {lastUpdated}
                 </h6>
                 <h6 style={{color: '#28a745', fontWeight: 600}}>
                   {isNaN(Date.parse(formatDate(lastUpdated)))
@@ -78,6 +74,13 @@ function Home(props) {
               </div>
             </div>
             {mumbaiWardData.length ? <Level data={mumbaiWardData[0]} /> : ''}
+            {fetched && (
+            <Table
+              states={mumbaiWardData}
+              onHighlightState={onHighlightState}
+              onHighlightDistrict={onHighlightDistrict}
+            />
+          )}
           </div>
         </div>
 
