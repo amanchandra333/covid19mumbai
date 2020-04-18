@@ -99,6 +99,7 @@ function MapExplorer({
       );
       setCurrentHoveredRegion(region);
       setPanelRegion(region);
+      // setSelectedRegion(region.Ward);
       onMapHighlightChange(region);
     },
     [states, onMapHighlightChange]
