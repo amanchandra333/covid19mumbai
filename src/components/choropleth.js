@@ -132,7 +132,7 @@ function ChoroplethMap({
       .shapeHeight(10)
       .cells(cells)
       .titleWidth(3)
-      .labels(["0.00", "0.00-0.01", "0.01-0.02", "0.02+"])
+      .labels(["0.00%", "0.00%-0.01%", "0.01%-0.02%", "0.02%+"])
       .title('Confirmed Cases')
       .orient('vertical')
       .scale(color);
