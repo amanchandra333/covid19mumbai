@@ -8,7 +8,7 @@ const STANDALONE_FIELD = "Number_of_Cases-_Standalone_Structure";
 
 function Table(props) {
   const [states, setStates] = useState(props.states.slice(2));
-  console.log(states);
+  // console.log(states);
   const [revealedStates, setRevealedStates] = useState({});
   const [count, setCount] = useState(0);
   const [sortData, setSortData] = useState({

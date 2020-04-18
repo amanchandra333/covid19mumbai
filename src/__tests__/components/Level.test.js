@@ -20,7 +20,7 @@ const states = [
     confirmed: '3',
     deaths: '1',
     recovered: '2',
-    state: 'Gujarat',
+    state: 'Maharashtra',
   },
 ];
 

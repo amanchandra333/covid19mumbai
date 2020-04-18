@@ -88,7 +88,7 @@ function MapExplorer({
       acc[state.Ward] = ((n1*COEFF.N1+n2*COEFF.N3+n3*COEFF.N3)/population[state.Ward])*100;
       return acc;
     }, {});
-    console.log(currentMapData);
+    // console.log(currentMapData);
     return [statistic, currentMapData];
   }, [currentMap, states]);
 
@@ -113,7 +113,7 @@ function MapExplorer({
       return;
     }
     const region = getRegionFromState(regionHighlighted.state);
-    console.log(region);
+    // console.log(region);
     setHoveredRegion(region.Ward, currentMap);
     setSelectedRegion(region.Ward);
   }, [regionHighlighted, setHoveredRegion]);

@@ -9,9 +9,6 @@ import {
 import './App.scss';
 
 import Home from './components/home';
-import Navbar from './components/navbar';
-import DeepDive from './components/deepdive';
-
 const history = require('history').createBrowserHistory;
 
 function App() {
@@ -22,12 +19,6 @@ function App() {
       displayName: 'Home',
       animationDelayForNavbar: 0.2,
     },
-    // {
-    //   pageLink: '/deepdive',
-    //   view: DeepDive,
-    //   displayName: 'Deep Dive',
-    //   animationDelayForNavbar: 0.4,
-    // },
   ];
 
   return (
@@ -36,7 +27,6 @@ function App() {
         <Route
           render={({location}) => (
             <div className="Almighty-Router">
-              <Navbar pages={pages} />
               <Route exact path="/" render={() => <Redirect to="/" />} />
               <Switch location={location}>
                 {pages.map((page, i) => {
