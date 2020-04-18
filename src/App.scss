@@ -628,6 +628,12 @@ h6 {
     h4,
     h5 { color: $green-mid; }
   }
+  .is-orange {
+    h1 { color: $orange; }
+
+    h4,
+    h5 { color: $orange-mid; }
+  }
 
   .is-gray {
     h1 { color: $gray; }

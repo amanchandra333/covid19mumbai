@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react';
 import axios from 'axios';
 import {formatDistance, format} from 'date-fns';
+import Level from './level'
 
 import {
   formatDate,
@@ -28,7 +29,6 @@ function Home(props) {
       const [mumbaiWardResponse] = await Promise.all([axios.get('https://script.google.com/macros/s/AKfycbwEZfKz70mGL1YPW9qBtyx9L3IoLqyhLl46pnGb3kkqIcip2A/exec?id=17jRnQ8hS764Q7yqZ2l2qUIO6LYECWrKLsLUuYl2fYxI&sheet=COVID-19%20Cases')]);
       const wardData = parseWardData(mumbaiWardResponse.data);
       setmumbaiWardData(wardData);
-      console.log(wardData);
       // setLastUpdated(wardData[0].lastupdatedtime);
       setFetched(true);
     } catch (err) {
@@ -77,6 +77,7 @@ function Home(props) {
                 </h6>
               </div>
             </div>
+            {mumbaiWardData.length ? <Level data={mumbaiWardData[0]} /> : ''}
           </div>
         </div>
 

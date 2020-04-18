@@ -86,7 +86,7 @@ function MapExplorer({
                       0 : parseInt(state['Number_of_Cases-_Medium_Congested']));
       const n3 = (isNaN(parseInt(state['Number_of_Cases-_Standalone_Structure'])) ?
                 0 : parseInt(state['Number_of_Cases-_Standalone_Structure']));
-      acc[state.Ward] = n1*COEFF.N1+n2*COEFF.N3+n3*COEFF.N3/population[state.Ward];
+      acc[state.Ward] = ((n1*COEFF.N1+n2*COEFF.N3+n3*COEFF.N3)/population[state.Ward])*100;
       return acc;
     }, {});
     console.log(currentMapData);

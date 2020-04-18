@@ -18,7 +18,6 @@ function ChoroplethMap({
     (geoData) => {
       d3.selectAll('svg#chart > *').remove();
       const propertyField = 'st_nm';
-      const maxInterpolation = 0.8;
       const svg = d3.select(choroplethMap.current);
       const width = +svg.attr('width');
       const height = +svg.attr('height');
@@ -53,13 +52,9 @@ function ChoroplethMap({
         .append('path')
         .attr('class', 'path-region')
         .attr('fill', function (d) {
-          const n = parseInt(mapData[d.properties[propertyField]]) || 0;
-          const color =
-            n === 0
-              ? '#ffffff'
-              : d3.interpolateReds(
-                  (maxInterpolation * n) / (statistic.maxConfirmed || 0.001)
-                );
+          const n = parseFloat(mapData[d.properties[propertyField]]) || 0.00;
+          const color = (n >= 0.02 ? '#e41a1c' : ((n < 0.02 && n >= 0.01) ? '#fc8d62' : 
+                ((n < 0.01 && n > 0.0) ? '#1f78b4' : '#1b9e77'))) ;
           return color;
         })
         .attr('d', path)
@@ -86,9 +81,9 @@ function ChoroplethMap({
           const value = mapData[d.properties[propertyField]] || 0;
           return (
             Number(
-              parseFloat(100 * (value / (statistic.total || 0.001))).toFixed(2)
+              parseFloat(value).toFixed(3)
             ).toString() +
-            '% from ' + d.properties[propertyField]
+            '% affected in ' + d.properties[propertyField]
           );
         });
 
@@ -116,44 +111,28 @@ function ChoroplethMap({
     const svg = d3.select(choroplethMap.current);
 
     // Colorbar
-    const maxInterpolation = 0.8;
     const color = d3
-      .scaleSequential(d3.interpolateReds)
-      .domain([0, statistic.maxConfirmed / maxInterpolation || 10]);
+      .scaleOrdinal()
+      .domain(["0.00", "0.00-0.01", "0.01-0.02", "0.02+"])
+      .range(["rgb(93, 199, 76)", "rgb(56, 106, 197)", "rgb(255,99,71)", "rgb(255,0,0)"]);
 
     let cells = null;
-    let label = null;
 
-    label = ({i, genLength, generatedLabels, labelDelimiter}) => {
-      if (i === genLength - 1) {
-        const n = Math.floor(generatedLabels[i]);
-        return `${n}+`;
-      } else {
-        const n1 = 1 + Math.floor(generatedLabels[i]);
-        const n2 = Math.floor(generatedLabels[i + 1]);
-        return `${n1} - ${n2}`;
-      }
-    };
-
-    const numCells = 6;
-    const delta = Math.floor(
-      (statistic.maxConfirmed < numCells ? numCells : statistic.maxConfirmed) /
-        (numCells - 1)
-    );
+    const numCells = 4;
+    const delta = (0.01);
 
     cells = Array.from(Array(numCells).keys()).map((i) => i * delta);
-
     svg
       .append('g')
       .attr('class', 'legendLinear')
-      .attr('transform', 'translate(1, 335)');
+      .attr('transform', 'translate(0.000, 0.030)');
 
     const legendLinear = legendColor()
       .shapeWidth(36)
       .shapeHeight(10)
       .cells(cells)
       .titleWidth(3)
-      .labels(label)
+      .labels(["0.00", "0.00-0.01", "0.01-0.02", "0.02+"])
       .title('Confirmed Cases')
       .orient('vertical')
       .scale(color);
