@@ -120,9 +120,9 @@ function ChoroplethMap({
 
       g.append('path')
         .attr('class', 'borders')
-        .attr('stroke', '#cherry-light')
+        .attr('stroke', '#d9f2d9')
         .attr('fill', 'none')
-        .attr('stroke-width', 2)
+        .attr('stroke-width', 0.5)
         .attr(
           'd',
           path(topojson.mesh(geoData, geoData.objects[mapMeta.graphObjectName]))
