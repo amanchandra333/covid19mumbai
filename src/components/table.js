@@ -256,7 +256,7 @@ function Table(props) {
         </tbody>
       </table>
       <h5 className="table-fineprint fadeInUp" style={{animationDelay: '1s'}}>
-        {count} States/UTS Affected
+        {count} Wards Affected
       </h5>
     </React.Fragment>
   );

@@ -149,7 +149,7 @@ function MapExplorer({
 
       <div className="map-stats">
         <div className="stats fadeInUp" style={{animationDelay: '2s'}}>
-          <h5>{window.innerWidth <= 769 ? 'VCongAr' : 'Very Congested'}</h5>
+          <h5>{window.innerWidth <= 769 ? 'VCong' : 'Very Congested'}</h5>
           <div className="stats-bottom">
             <h1>{formatNumber(panelRegion["Number_of_Cases-_Very_Congested_Area"])}</h1>
             <h6>{}</h6>
@@ -160,7 +160,7 @@ function MapExplorer({
           className="stats is-orange fadeInUp"
           style={{animationDelay: '2.1s'}}
         >
-          <h5>{window.innerWidth <= 769 ? 'MedCong' : 'Med. Congested'}</h5>
+          <h5>{window.innerWidth <= 769 ? 'MedCong' : 'Medium Congested'}</h5>
           <div className="stats-bottom">
             <h1>{formatNumber(panelRegion["Number_of_Cases-_Medium_Congested"])}</h1>
             <h6>{}</h6>
