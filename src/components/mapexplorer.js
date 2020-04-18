@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import ChoroplethMap from './choropleth';
-import {MAP_TYPES, MAPS_DIR} from '../constants';
+import {MAP_TYPES, MAPS_DIR, COEFF} from '../constants';
 import {formatDate, formatDateAbsolute} from '../utils/common-functions';
 import {formatDistance, format, parse} from 'date-fns';
 import {formatNumber} from '../utils/common-functions';
@@ -51,13 +51,13 @@ function MapExplorer({
       if (state.Ward === 'Total') {
         return acc;
       }
-      const a = (isNaN(parseInt(state['Number_of_Cases-_Very_Congested_Area'])) ?
+      const n1 = (isNaN(parseInt(state['Number_of_Cases-_Very_Congested_Area'])) ?
                 0 : parseInt(state['Number_of_Cases-_Very_Congested_Area']));
-      const b = (isNaN(parseInt(state['Number_of_Cases-_Medium_Congested'])) ?
+      const n2 = (isNaN(parseInt(state['Number_of_Cases-_Medium_Congested'])) ?
                       0 : parseInt(state['Number_of_Cases-_Medium_Congested']));
-      const c = (isNaN(parseInt(state['Number_of_Cases-_Standalone_Structure'])) ?
+      const n3 = (isNaN(parseInt(state['Number_of_Cases-_Standalone_Structure'])) ?
                 0 : parseInt(state['Number_of_Cases-_Standalone_Structure']));
-      acc[state.Ward] = a+b+c;
+      acc[state.Ward] = n1*COEFF.N1+n2*COEFF.N3+n3*COEFF.N3;
       return acc;
     }, {});
     return [statistic, currentMapData];

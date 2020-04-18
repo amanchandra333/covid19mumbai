@@ -4,11 +4,6 @@ import {legendColor} from 'd3-svg-legend';
 import * as topojson from 'topojson';
 import {MAP_TYPES} from '../constants';
 
-const propertyFieldMap = {
-  country: 'st_nm',
-  state: 'district',
-};
-
 function ChoroplethMap({
   statistic,
   mapData,
@@ -24,7 +19,7 @@ function ChoroplethMap({
   const ready = useCallback(
     (geoData) => {
       d3.selectAll('svg#chart > *').remove();
-      const propertyField = propertyFieldMap[mapMeta.mapType];
+      const propertyField = 'st_nm';
       const maxInterpolation = 0.8;
       const svg = d3.select(choroplethMap.current);
       const width = +svg.attr('width');
