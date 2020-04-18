@@ -4,7 +4,6 @@ import {MAP_TYPES, MAPS_DIR} from '../constants';
 import {formatDate, formatDateAbsolute} from '../utils/common-functions';
 import {formatDistance, format, parse} from 'date-fns';
 import {formatNumber} from '../utils/common-functions';
-import * as Icon from 'react-feather';
 
 const mapMeta = {
   Mumbai: {
@@ -28,18 +27,9 @@ const getRegionFromState = (state) => {
   return region;
 };
 
-const getRegionFromDistrict = (districtData, name) => {
-  if (!districtData) return;
-  const region = {...districtData};
-  if (!region.name) region.name = region.name;
-  return region;
-};
-
 function MapExplorer({
   forwardRef,
   states,
-  stateDistrictWiseData,
-  stateTestData,
   regionHighlighted,
   onMapHighlightChange,
 }) {
@@ -52,7 +42,6 @@ function MapExplorer({
   const [currentHoveredRegion, setCurrentHoveredRegion] = useState(
     getRegionFromState(states[0])
   );
-  const [testObj, setTestObj] = useState({});
   const [currentMap, setCurrentMap] = useState(mapMeta.Mumbai);
 
   const [statistic, currentMapData] = useMemo(() => {
@@ -72,7 +61,7 @@ function MapExplorer({
       return acc;
     }, {});
     return [statistic, currentMapData];
-  }, [currentMap, states, stateDistrictWiseData]);
+  }, [currentMap, states]);
 
   const setHoveredRegion = useCallback(
     (name, currentMap) => {
@@ -83,7 +72,7 @@ function MapExplorer({
       setPanelRegion(region);
       onMapHighlightChange(region);
     },
-    [states, stateDistrictWiseData, onMapHighlightChange]
+    [states, onMapHighlightChange]
   );
 
   // useEffect(() => {
@@ -131,18 +120,10 @@ function MapExplorer({
   //       setHoveredRegion(topDistrict, newMap);
   //     }
     },
-    [setHoveredRegion, stateDistrictWiseData, states]
+    [setHoveredRegion, states]
   );
 
   const {name, lastupdatedtime} = currentHoveredRegion;
-
-  useEffect(() => {
-    setTestObj(
-      stateTestData.find(
-        (obj) => obj.state === panelRegion.name && obj.totaltested !== ''
-      )
-    );
-  }, [panelRegion, stateTestData, testObj]);
 
   return (
     <div
@@ -190,6 +171,34 @@ function MapExplorer({
           </div>
         </div>
       </div>
+        <div className="meta fadeInUp" style={{animationDelay: '2.4s'}}>
+        <h2>{name}</h2>
+        {lastupdatedtime && (
+          <div
+            className={`last-update ${
+              currentMap.mapType === MAP_TYPES.STATE
+                ? 'district-last-update'
+                : 'state-last-update'
+            }`}
+          >
+            <h6>Last updated</h6>
+            <h3
+              title={
+                isNaN(Date.parse(formatDate(lastupdatedtime)))
+                  ? ''
+                  : formatDateAbsolute(lastupdatedtime)
+              }
+            >
+              {isNaN(Date.parse(formatDate(lastupdatedtime)))
+                ? ''
+                : formatDistance(
+                    new Date(formatDate(lastupdatedtime)),
+                    new Date()
+                  ) + ' ago'}
+            </h3>
+          </div>
+        )}
+        </div>
 
 
       <ChoroplethMap

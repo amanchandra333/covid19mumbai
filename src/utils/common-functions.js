@@ -128,7 +128,7 @@ export const formatNumber = (value) => {
   return isNaN(value) ? '-' : numberFormatter.format(value);
 };
 
-// Parse the data to get the total infected for all the regions 
+// Parse the data to get the total infected for all the regions
 export const parseWardData  = (wards) => {
   wards = wards["COVID-19 Cases"];
   let veryCongestedCases = 0, medCongestedCases = 0, standaloneCases = 0;
